@@ -72,6 +72,11 @@ window.onload = () => {
                     const modalHeader = document.createElement('div')
                     modalHeader.classList.add('modal-header')
                     modalContent.appendChild(modalHeader)
+                    const modalTitle = document.createElement('h5')
+                    modalTitle.classList.add('modal-title')
+                    modalTitle.id = 'imageModalLabel'
+                    modalTitle.innerText = 'image'
+                    modalHeader.appendChild(modalTitle)
                     const modalCloseBtn = document.createElement('button')
                     modalCloseBtn.type = 'button'
                     modalCloseBtn.classList.add('close')
@@ -80,15 +85,15 @@ window.onload = () => {
                     modalHeader.appendChild(modalCloseBtn)
                     const spanInsideModalBtn = document.createElement('span')
                     spanInsideModalBtn.setAttribute('aria-hidden', 'true')
-                    spanInsideModalBtn.innerText = '&times;'
+                    spanInsideModalBtn.innerHTML = '&times;'
                     modalCloseBtn.appendChild(spanInsideModalBtn)
                     const modalBody = document.createElement('div')
                     modalBody.classList.add('modal-body')
                     modalContent.appendChild(modalBody)
                     const biggerImgForModal = document.createElement('img')
                     biggerImgForModal.classList.add('img-fluid')
-                    biggerImgForModal.src = body.photos[i].src
-
+                    biggerImgForModal.src = body.photos[i].src.large
+                    modalBody.appendChild(biggerImgForModal)
                 }
                 showAlert(cardImagesContainer.length)
             })
